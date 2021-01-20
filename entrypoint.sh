@@ -11,6 +11,7 @@ USER_EMAIL="$4"
 DESTINATION_REPOSITORY_USERNAME="$5"
 TARGET_BRANCH="$6"
 COMMIT_MESSAGE="$7"
+FINAL_PUSH="$8"
 
 if [ -z "$DESTINATION_REPOSITORY_USERNAME" ]
 then
@@ -27,10 +28,37 @@ git clone --single-branch --branch "$TARGET_BRANCH" "https://$API_TOKEN_GITHUB@g
 ls -la "$CLONE_DIR"
 
 TARGET_DIR=$(mktemp -d)
+
+case $FINAL_PUSH in
+'only source')
+
 mv "$CLONE_DIR/.git" "$TARGET_DIR"
 
 echo "Copying contents to git repo"
 cp -ra "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
+
+;;
+'source priority')
+
+mv "$CLONE_DIR" "$TARGET_DIR"
+
+echo "Copying contents to git repo"
+cp -rf "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
+
+;;
+'target repo priority')
+mv "$CLONE_DIR" "$TARGET_DIR"
+
+echo "Copying contents to git repo"
+cp -rn "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
+
+;;
+*)
+echo 'final-push incorrect, not in options'
+exit(-1)
+;;
+esac
+
 cd "$TARGET_DIR"
 
 echo "Files that will be pushed"
