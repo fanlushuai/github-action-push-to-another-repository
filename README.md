@@ -50,7 +50,7 @@ Then make the token available to the Github Action following the steps:
 * On the left hand side pane click on "Secrets"
 * Click on "Add a new secret" and name it "API_TOKEN_GITHUB"
 
-### `final-push` (argument) [optional:'only source' | 'source priority'| 'target repo priority' (**default**)]
+### `final-push` (argument) [optional: 'only source' | 'source priority'(**default**) | 'target repo priority' ]
   - 'only source': files will push just include source dir which you want to push
   - 'source priority': files will push include source and target repo ,but source files will overwrite tartget repo if conflict exsit
   - 'target repo priority': files will push include source and target repo ,but source files will not overwrite tartget repo if conflict exsit
