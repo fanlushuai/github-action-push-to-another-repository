@@ -40,14 +40,14 @@ cp -ra "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
 ;;
 'source priority')
 
-mv "$CLONE_DIR/." "$TARGET_DIR"
+mv "$CLONE_DIR/*" "$TARGET_DIR"
 
 echo "Copying contents to git repo"
 cp -rf "$SOURCE_DIRECTORY/." "$TARGET_DIR"
 
 ;;
 'target repo priority')
-mv "$CLONE_DIR" "$TARGET_DIR"
+mv "$CLONE_DIR/*" "$TARGET_DIR"
 
 echo "Copying contents to git repo"
 cp -rn "$SOURCE_DIRECTORY/." "$TARGET_DIR"
