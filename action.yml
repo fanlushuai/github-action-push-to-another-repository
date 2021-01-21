@@ -27,7 +27,7 @@ inputs:
     required: false
   final-push:
     description: 'only source| source priority| target repo priority. '
-    default: 'target repo priority'
+    default: 'source priority'
     required: false
 runs:
   using: 'docker'
