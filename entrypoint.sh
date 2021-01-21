@@ -55,7 +55,7 @@ cp -rn "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
 ;;
 *)
 echo 'final-push incorrect, not in options'
-exit(-1)
+exit 1
 ;;
 esac
 
