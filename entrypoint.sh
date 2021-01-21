@@ -40,12 +40,16 @@ cp -ra "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
 ;;
 'source priority')
 
+DOT_GIT_DIR=$(mktemp -d)
+
+mv "$CLONE_DIR/.git" "$DOT_GIT_DIR"
+
 mv "$CLONE_DIR" "$TARGET_DIR"
 
 echo "Copying contents to git repo"
 cp -rf "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
 
-mv "$CLONE_DIR/.git" "$TARGET_DIR"
+cp -rn "$DOT_GIT_DIR" "$TARGET_DIR" 
 
 ;;
 'target repo priority')
