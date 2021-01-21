@@ -49,7 +49,7 @@ mv "$CLONE_DIR" "$TARGET_DIR"
 echo "Copying contents to git repo"
 cp -rf "$SOURCE_DIRECTORY"/. "$TARGET_DIR"
 
-cp -rn "$DOT_GIT_DIR" "$TARGET_DIR" 
+mv -n "$DOT_GIT_DIR" "$TARGET_DIR/.git" 
 
 ;;
 'target repo priority')
